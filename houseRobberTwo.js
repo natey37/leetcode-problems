@@ -33,9 +33,6 @@ var rob = function(nums) {
         let prev = 0
         for(let i=start; i<length; i++){
             let temp = curr
-            if(i === array.length - 1 && nums[i]){
-
-            }
             curr = Math.max(prev + nums[i], curr)
             prev = temp 
         }
@@ -45,4 +42,18 @@ var rob = function(nums) {
     
     
     return Math.max(moneys(nums, 0, nums.length - 1), moneys(nums, 1, nums.length))
+};
+
+//solution 2
+var rob = function(nums) {
+    if(nums.length<1)return 0
+    if(nums.length===1)return nums[0]
+    let dpArr = [nums[0], Math.max(nums[0], nums[1])]
+    let dpArr2 = [0, nums[1]]
+    for(let i=2;i<nums.length;i++){
+        i!=nums.length-1 ?dpArr[i] = Math.max(dpArr[i-1], dpArr[i-2]+nums[i]):dpArr[i]=dpArr[i-1]
+        dpArr2[i] = Math.max(dpArr2[i-1], dpArr2[i-2]+nums[i])
+    }
+    console.log(dpArr, dpArr2)
+    return Math.max(dpArr[dpArr.length-1],dpArr2[dpArr2.length-1])
 };
