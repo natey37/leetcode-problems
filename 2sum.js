@@ -13,6 +13,7 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 */
 
+//two pass hash
 
 var twoSum = function(nums, target) {
     let hash = {}
@@ -27,4 +28,21 @@ var twoSum = function(nums, target) {
     }
 };
 
- 
+ //one pass hash
+
+
+ var twoSum = function(nums, target) {
+
+ let hash = {}
+
+ for(let i=0; i<nums.length;i++){
+     let complement = target - nums[i]
+     console.log(hash[complement])
+     if(hash[complement] === 0 || hash[complement]){
+         console.log("here")
+         return [hash[complement], i]
+     }
+     hash[nums[i]] = i
+ }
+
+};
