@@ -1,170 +1,170 @@
-//For simplicity I am going to have the hash object {A:2,B:1} represented as A2,B1 and will psuedocode the rest 
-//Step 1a.
-    //dfs(A2,B1) -> starting hash
-        //sum = 0
-        //for(letter in hash) -> ON LETTER A
-            //A != 0 
-            //sum ++ -> sum = 1 
-            //hash[letter]-- -> A1,B1
-            //sum += dfs(A1,B1)
+// For simplicity I am going to have the hash object {A:2,B:1} represented as A2,B1 and will psuedocode the rest 
+// Step 1a.
+//     dfs(A2,B1) -> starting hash
+//         sum = 0
+//         for(letter in hash) -> ON LETTER A
+//             A != 0 
+//             sum ++ -> sum = 1 
+//             hash[letter]-- -> A1,B1
+//             sum += dfs(A1,B1)
 
-            //Move to Step 2a.
+//             Move to Step 2a.
 
-//Step 1b.
-            //sum += 4 -> 1 + 4 = 5
-            //hash[letter]++ -> A2,B1
-        //for(letter in hash) -> ON LETTER B 
-            //B != 0
-            //sum++ -> sum = 6 
-            //hash[letter]-- -> A2,B0
-            //sum += dfs(A2,B0)
+// Step 1b.
+//             sum += 4 -> 1 + 4 = 5
+//             hash[letter]++ -> A2,B1
+//         for(letter in hash) -> ON LETTER B 
+//             B != 0
+//             sum++ -> sum = 6 
+//             hash[letter]-- -> A2,B0
+//             sum += dfs(A2,B0)
 
-            //Move to Step 7a.
+//             Move to Step 7a.
 
-//Step 1c. 
-            //sum += 2 -> 6 + 2 = 8 
-            //hash[letter]++ -> A2,B1 (Returning our original hash as we return from our recursion)
+// Step 1c. 
+//             sum += 2 -> 6 + 2 = 8 
+//             hash[letter]++ -> A2,B1 (Returning our original hash as we return from our recursion)
 
-            //return sum -> sum = 8 
+//             return sum -> sum = 8 
 
-//Step 2a. 
-    //dfs(A1,B1)
-        //sum = 0
-        //for(letter in hash) -> ON LETTER A 
-            //A != 0 
-            //sum++ -> sum = 1 
-            //hash[letter]-- -> A0,B1
-            //sum += dfs(A0,B1)
+// Step 2a. 
+//     dfs(A1,B1)
+//         sum = 0
+//         for(letter in hash) -> ON LETTER A 
+//             A != 0 
+//             sum++ -> sum = 1 
+//             hash[letter]-- -> A0,B1
+//             sum += dfs(A0,B1)
 
-            //Move to Step 3a.
+//             Move to Step 3a.
             
-//Step 2b.
-            //sum += 1 -> 1 + 1 = 2 
-            //hash[letter]++ -> A1,B1
-        //for(letter in hash) -> ON LETTER B 
-            //B != 0
-            //sum++ -> sum = 3
-            //hash[letter]-- -> A1,B0
-            //sum += dfs(A1,B0)
+// Step 2b.
+//             sum += 1 -> 1 + 1 = 2 
+//             hash[letter]++ -> A1,B1
+//         for(letter in hash) -> ON LETTER B 
+//             B != 0
+//             sum++ -> sum = 3
+//             hash[letter]-- -> A1,B0
+//             sum += dfs(A1,B0)
 
-            //Move to Step 5a.
+//             Move to Step 5a.
 
-//Step 2c. 
-            //sum += 1 -> 3 + 1 = 4 
-            //hash[letter]++ -> A1,B1
-        //return sum -> sum = 4 
+// Step 2c. 
+//             sum += 1 -> 3 + 1 = 4 
+//             hash[letter]++ -> A1,B1
+//         return sum -> sum = 4 
 
-        //Move back up to where we called function, 1b.
+//         Move back up to where we called function, 1b.
 
-//Step 3a.
-    //dfs(A0,B1)
-        //sum = 0
-        //for(letter in hash) -> ON LETTER A 
-            //A == 0 -> CONTINUE
-        //for(letter in hash) -> ON LETTER B
-             //B != 0
-            //sum++ -> sum = 1 
-            //hash[letter]-- -> A0,B0
-            //sum += dfs(A0,B0)
+// Step 3a.
+//     dfs(A0,B1)
+//         sum = 0
+//         for(letter in hash) -> ON LETTER A 
+//             A == 0 -> CONTINUE
+//         for(letter in hash) -> ON LETTER B
+//              B != 0
+//             sum++ -> sum = 1 
+//             hash[letter]-- -> A0,B0
+//             sum += dfs(A0,B0)
 
-            //Move to Step 4 
+//             Move to Step 4 
 
-//Step 3b. 
-            //sum += 0 -> 1 + 0 = 1
-            //hash[letter]++ -> A0,B1 (We are essentially resetting our hash to its previous state, when exiting each recursive level)
-        //return sum -> 1 
+// Step 3b. 
+//             sum += 0 -> 1 + 0 = 1
+//             hash[letter]++ -> A0,B1 (We are essentially resetting our hash to its previous state, when exiting each recursive level)
+//         return sum -> 1 
 
-        //Move back up to where we called the function, 2b.
+//         Move back up to where we called the function, 2b.
 
-//Step 4 
-    //dfs(A0,B0)
-        //sum = 0 
-        //for(letter in hash) -> ON LETTER A 
-            //A == 0 -> CONTINUE
-        //for(letter in hash) -> ON LETTER B
-            //B == 0 -> CONTINUE
-        //return sum -> 0
+// Step 4. -> WE REACH THE BOTTOM, TIME TO GO BACK UP
+//     dfs(A0,B0)
+//         sum = 0 
+//         for(letter in hash) -> ON LETTER A 
+//             A == 0 -> CONTINUE
+//         for(letter in hash) -> ON LETTER B
+//             B == 0 -> CONTINUE
+//         return sum -> 0
 
-        //Move back up to where we called function, 3b.
+//         Move back up to where we called function, 3b.
 
-//Step 5a.
-    //dfs(A1,B0)
-        //sum = 0
-        //for(letter in hash) -> ON LETTER A 
-            //A != 0 
-            //sum++ -> sum = 1 
-            //hash[letter]-- -> A0,B0
-            //sum += dfs(A0,B0)
+// Step 5a.
+//     dfs(A1,B0)
+//         sum = 0
+//         for(letter in hash) -> ON LETTER A 
+//             A != 0 
+//             sum++ -> sum = 1 
+//             hash[letter]-- -> A0,B0
+//             sum += dfs(A0,B0)
 
-            //Move to Step 6
+//             Move to Step 6
 
-//Step 5b.
-            //sum += 0 -> 1 + 0 = 1 
-            //hash[letter]++ -> A1,B0
-        //for(letter in hash) -> ON LETTER B
-            //B == 0 -> CONTINUE
-        //return sum -> sum = 1 
+// Step 5b.
+//             sum += 0 -> 1 + 0 = 1 
+//             hash[letter]++ -> A1,B0
+//         for(letter in hash) -> ON LETTER B
+//             B == 0 -> CONTINUE
+//         return sum -> sum = 1 
 
-        //Move back up to where we called the function, 2c.
+//         Move back up to where we called the function, 2c.
 
-//Step 6. 
-    //dfs(A0,B0)
-        //sum = 0 
-        //for(letter in hash) -> ON LETTER A 
-            //A == 0 -> CONTINUE
-        //for(letter in hash) -> ON LETTER B
-            //B == 0 -> CONTINUE
-        //return sum -> 0
+// Step 6. 
+//     dfs(A0,B0)
+//         sum = 0 
+//         for(letter in hash) -> ON LETTER A 
+//             A == 0 -> CONTINUE
+//         for(letter in hash) -> ON LETTER B
+//             B == 0 -> CONTINUE
+//         return sum -> 0
 
-        //Move back up to where we called the function, 5b.
+//         Move back up to where we called the function, 5b.
 
-//Step 7a.
-    //dfs(A2,B0)
-        //sum = 0 
-        //for(letter in hash) -> ON LETTER A 
-            //A != 0 
-            //sum++ -> sum = 1 
-            //hash[letter]-- -> A1,B0
-            //sum += dfs(A1, B0)
+// Step 7a.
+//     dfs(A2,B0)
+//         sum = 0 
+//         for(letter in hash) -> ON LETTER A 
+//             A != 0 
+//             sum++ -> sum = 1 
+//             hash[letter]-- -> A1,B0
+//             sum += dfs(A1, B0)
 
-            //Move to Step 8a.
+//             Move to Step 8a.
 
-//Step 7b.
-            //sum += 1 -> 1 + 1 = 2 
-            //hash[letter]++ -> A2,B0
-        //for(letter in hash) -> ON LETTER B 
-            //B == 0 -> CONTINUE 
-        //return sum -> sum = 2 
+// Step 7b.
+//             sum += 1 -> 1 + 1 = 2 
+//             hash[letter]++ -> A2,B0
+//         for(letter in hash) -> ON LETTER B 
+//             B == 0 -> CONTINUE 
+//         return sum -> sum = 2 
         
-        //Move back up to wherw we called the function, 1c.
+//         Move back up to wherw we called the function, 1c.
 
-//Step 8a. 
-    //dfs(A1,B0)
-        //sum = 0 
-        //for(letter in hash) -> ON LETTER A 
-            //A != 0 
-            //sum++ -> sum = 1 
-            //hash[letter]-- -> A0, B0
-            //sum += dfs(A0,B0) 
+// Step 8a. 
+//     dfs(A1,B0)
+//         sum = 0 
+//         for(letter in hash) -> ON LETTER A 
+//             A != 0 
+//             sum++ -> sum = 1 
+//             hash[letter]-- -> A0, B0
+//             sum += dfs(A0,B0) 
 
-            //Move to Step 9 
+//             Move to Step 9 
 
-//Step 8b. 
-            //sum += 0 -> 1 + 0 = 1 
-            //hash[letter]++ -> A1,B0
-        //for(letter in hash) -> ON LETTER B 
-            //B == 0 -> CONTINUE 
-        //return sum -> sum = 1 
+// Step 8b. 
+//             sum += 0 -> 1 + 0 = 1 
+//             hash[letter]++ -> A1,B0
+//         for(letter in hash) -> ON LETTER B 
+//             B == 0 -> CONTINUE 
+//         return sum -> sum = 1 
 
-        //Move back up where we called the function, 7b.
+//         Move back up where we called the function, 7b.
 
-//Step 9 
-    //dfs(A0,B0)
-        //sum = 0 
-        //for(letter in hash) -> ON LETTER A 
-            //A == 0 -> CONTINUE 
-        //for(letter in hash) -> ON LETTER B 
-            //B == 0 -> CONTINUE 
-        //return sum -> sum = 0 
+// Step 9 
+//     dfs(A0,B0)
+//         sum = 0 
+//         for(letter in hash) -> ON LETTER A 
+//             A == 0 -> CONTINUE 
+//         for(letter in hash) -> ON LETTER B 
+//             B == 0 -> CONTINUE 
+//         return sum -> sum = 0 
 
-        //Move back to up where we called the function, 8b.
+//         Move back to up where we called the function, 8b.
