@@ -38,6 +38,13 @@ function dfs(numbers, path, used, res) {
     }
 }
 
+//Here is an example:
+    //permute([1,2,3])
+        //let res = []
+        //dfs([1,2,3], [], [false, false, false], [])
+            //MOVE TO STEP 1a.
+        //return res = [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
+
 //Step 1a.
     //dfs([1,2,3], [], [false, false, false], [])
         //if([].length == [1,2,3].length) -> false 
@@ -74,6 +81,7 @@ function dfs(numbers, path, used, res) {
 
                 //FINSIHED FUNCTION, EXIT
                 //Now we return the res array which contains all of our permutations. 
+                //res = [[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]]
 
 //Step 2a. 
     //dfs([1,2,3], [1], [true, false, false], [])
@@ -116,7 +124,7 @@ function dfs(numbers, path, used, res) {
                 //FINISHED FUNCTION, MOVE BACK TO 2b.
 
 //Step 4a. 
-    //dfs([1,2,3], [1,2,3], [true, true, false], [])
+    //dfs([1,2,3], [1,2,3], [true, true, true], [])
         //if([1,2,3].length == [1,2,3].length) -> true
             //[].push(Array.from([1,2,3]))
             //return 
