@@ -40,6 +40,7 @@ var multiply = function(num1, num2) {
             result[p1] += Math.floor(sum/10)
         }
     }
+    
     if (result[0] === 0) result.shift()
     return result.join('')
 };
