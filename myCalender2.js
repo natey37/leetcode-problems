@@ -55,3 +55,29 @@ MyCalendarTwo.prototype.book = function(start, end) {
  * var obj = new MyCalendarTwo()
  * var param_1 = obj.book(start,end)
  */
+
+
+
+var delNodes = function(root, to_delete) {
+    let results = []
+      
+    const solve = (root, add) => {
+        if(root == null) return null
+        
+        if(to_delete.includes(root.val)) {
+            if(root.left) solve(root.left, true)
+            if(root.right) solve(root.right, true)
+            root.left = null
+            root.right = null
+            return null
+        } else {
+            root.left = solve(root.left, false)
+            root.right = solve(root.right, false)
+            if(add && !results.includes(root)) results.push(root)
+            return root
+        }
+    }
+    
+    solve(root, true)
+    return results
+};
