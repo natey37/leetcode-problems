@@ -55,3 +55,68 @@ var longestArithSeqLength = function(A) {
     }
     return max
 };
+
+//Example [3,6,9,12]
+
+//Step 1.
+    //longestArithSeqLength([3,6,9,12])
+        //dp = []
+        //dp[0] = {}
+
+        //max = 0
+
+        //for(i=1;i<4;i++) 
+            //newHash = {}
+
+            //for(j=0;j<1;j++) 
+                //diff = 6 - 3 
+                //prev = {}
+                //length = 1 + 1 
+                //newHash[3] = 2
+                //max = newHash[diff] = 2 
+        
+            //dp[i] = newHash
+//Step 2.
+        //for(i=2;i<4;i++)
+            //newHash = {}
+
+            //for(j=0;j<2;j++)
+                //diff = 9 -3
+                //prev = {}
+                //length = 1 + 1 
+                //newHash[6] = 2
+                //max = max = 2 
+
+            //for(j=1;j<2;j++)
+                //diff = 9 - 6
+                //prev = {3:2}
+                //length = 2 + 1
+                //newHash[3] = 3
+                //max = newHash[diff] = 3
+
+//Step 3
+        //for(i=3;i<4;i++)
+            //newHash = {}
+
+            //for(j=0;j<3;j++)
+                //diff = 12 - 3
+                //prev = {}
+                //length = 1 + 1
+                //newHash[9] = 2
+                //max = max
+
+            //for(j=1;j<3;j++)
+                //diff = 12 - 6 
+                //prev = {3:2}
+                //length = 1 + 1
+                //newHash[6] = 2 
+                //max = max
+
+            //for(j=2;j<3;j++)
+                //diff = 12 - 9
+                //prev = {3:3,6:2}
+                //length = 3 + 1
+                //newHash[3] = 4 
+                //max = newHash[3] = 4
+
+//We then return our max, which is equal to our longest subsequence
