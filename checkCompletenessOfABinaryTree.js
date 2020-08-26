@@ -43,7 +43,6 @@ var isCompleteTree = function(root) {
     
     while(queue.length){
         let node = queue.shift()
-            console.log(node)
 
         if(node.left){
             if(leaf) return false
@@ -61,3 +60,54 @@ var isCompleteTree = function(root) {
     return true
 
 };
+
+
+//Example 1.  root = [1,2,3,5,null,7,8]
+
+//                       1
+//                      / \
+//                     2   3
+//                    /   / \
+//                   5   7   8
+
+//Step 1
+    //isCompleteTree([1,2,3,5,null,7,8])
+        //queue = [[1,2,3,5,null,7,8]]
+        //leaf = false 
+        
+        //while(queue.length)
+            //node = [1,2,3,5,null,7,8]
+
+            //if(node.left)
+                //leaf -> false 
+                //queue.push([2,5])
+            //if(node.right)
+                //leaf -> false 
+                //queue.push([3,7,8])
+//Step 2
+        //queue = [[2,5], [3,7,8]]
+        //leaf = false 
+
+        //while(queue.length)
+            //node = [2,5]
+            
+            //if(node.left)
+                //leaf -> false 
+                //queue.push([5])
+            //if(node.right) -> false 
+            //else leaf = true 
+
+//Step 3 
+        //queue = [[3,7,8], [5]]
+        //leaf = true 
+
+        //while(queue.length)
+            //node = [3,7,8]
+
+            //if(node.left)
+                //leaf -> true 
+                    //return false 
+
+    
+
+
