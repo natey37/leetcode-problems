@@ -43,23 +43,21 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isValidBST = function(root) {
-    let inOrder = []
+
    
     //if we are looking for a valid binary search tree than we know that if do an inorder traversal of our tree every node we visit should be in order (correctly sorted)
-   const order = (node) => {
-       if(node == null) return 
+    var isValidBST = function(root) {
+        let inOrder = []
+        let notOrdered = false
+        const order = (node) => {
+            if(node == null) return 
+            
+            order(node.left)
+            if(inOrder[inOrder.length-1] >= node.val) return notOrdered = true
+            inOrder.push(node.val)
+            order(node.right)
+        }
+        order(root)
        
-       order(node.left)
-       inOrder.push(node.val)
-       order(node.right)
-   }
-   order(root)
-   
-   //once we have our array of our inorder traversal we loop through to make sure it is sorted
-   for(let i=1;i<=inOrder.length - 1;i++){
-       if(inOrder[i] <= inOrder[i-1] || inOrder[i] >= inOrder[i+1]) return false
-   }
-   
-   return true
-};
+        return notOrdered ? false : true
+    };
