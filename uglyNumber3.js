@@ -1,7 +1,7 @@
 /*
 
 */
-
+//this solution is not optimal and exceeds the time limit for large numbers
 
 var nthUglyNumber = function(n, a, b, c) {
     //this is where will store our ugly numbers -> numbers that are divisible by a,b, or c
