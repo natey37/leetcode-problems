@@ -89,6 +89,10 @@ var fourSum = function(nums, target) {
             }
             
             for(let i = 0; i < arr.length - 1; i++) {
+                //We can add this line if we want to end our function a bit earlier, obviously if our  arr[i] is a number greater than or equal to our target than we cannot possibly make a sum from from 4 numbers to equal our target
+
+                //if(arr[i] >= target && k === target) break
+
                 while(arr[i] === arr[i-1]) i++;
                 kthSum(arr.slice(i+1), tar - arr[i], [...res, arr[i]], k-1);
             }
@@ -344,3 +348,41 @@ var fourSum = function(nums, target) {
                 //while 0 < 0 -> false, exit 
                     //MOVE BACK TO STEP 1d.
 
+
+
+
+var fourSum = function(nums, target) {
+
+    let results = []
+    let sorted = nums.sort((a,b) => a - b > 0 ? 1 : -1)
+    
+    for(let i=0;i<sorted.length-3;i++){
+        for(let j=i+1;j<sorted.length-2;j++){
+      
+            let front = j + 1
+            let back = sorted.length - 1
+            
+            while(front < back){
+                let sum = sorted[i] + sorted[j] + sorted[front] + sorted[back]
+                
+                if(sum === target){
+                    results.push([sorted[i], sorted[j], sorted[front], sorted[back]])
+                    
+                    while(sorted[front] === sorted[front+1]) front++
+                    while(sorted[back] === sorted[back-1]) back --
+                    
+                    front++
+                    back--
+                } else if(sum < target){
+                    front++
+                } else {
+                    back --
+                }
+                
+            }
+            while(sorted[j] === sorted[j+1]) j++
+        }
+        while(sorted[i] === sorted[i+1]) i++
+    }
+    return results
+};

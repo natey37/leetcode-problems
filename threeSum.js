@@ -78,3 +78,42 @@ var threeSum = function(nums) {
     }
     return results
 };
+
+
+
+
+var threeSum = function(nums) {
+    let results = []
+    
+    if(nums.length < 3) return results
+
+    let sorted = nums.sort((a,b) => a - b > 0 ? 1 : -1)
+    let target = 0 
+    
+    for(let i=0;i<sorted.length -2;i++){
+        
+        if(sorted[i] > target) break;
+        
+        if(i > 0 && sorted[i] === sorted[i-1]) continue;
+        
+        let front = i+1
+        let back = sorted.length - 1
+        
+        while(front < back){
+            let sum = sorted[i] + sorted[front] + sorted[back]
+            if(sum === target){
+                results.push([sorted[i], sorted[front], sorted[back]])
+                while(sorted[front] === sorted[front+1]) front++
+                while(sorted[back] === sorted[back-1]) back--
+                
+                front++
+                back--
+            } else if(sum < target){
+                front++
+            } else {
+                back--
+            }
+        }
+    }
+    return results
+};
