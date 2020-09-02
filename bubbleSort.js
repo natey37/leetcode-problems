@@ -2,6 +2,9 @@
 Bubble Sort
 */
 
+//bubble sort loops through the array and for every single element compares it to its neighbor and swaps them if the number to the left is larger than the number to the right 
+//we start at the end of the array because after the first pass we will have our largest number at the end of our array, and each subsequent loop will add the next highest number to the furthest right it can go
+
 //Time complexity average O(n^2), best case O(n), worst case O(n^2)
 //Space complexity O(1)
 const bubbleSort = (array) => {
