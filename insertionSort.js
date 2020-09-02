@@ -2,6 +2,8 @@
 Insertion Sort 
 */
 
+//insertion sort, start at the first element in the array, compare it to the previous element, if it is smaller, then push the larger number to the right and insert the new number where the previous number was
+//each subsequent loop will check the next number, and compare to all the previous numbers, when we find a number smaller than our current number we insert it right in front of that number 
 
 //Time Complexity average O(n^2), worst O(n^2), best O(n)
 //Space Complexity O(1)
