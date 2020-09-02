@@ -1,6 +1,8 @@
 /*
 Insertion Sort 
 */
+
+
 //Time Complexity average O(n^2), worst O(n^2), best O(n)
 //Space Complexity O(1)
 function insertionSort(arr){
