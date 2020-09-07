@@ -16,6 +16,7 @@ Merge Sort
 //so our time complexity is O(n * log n)
 
 //Space Complexity O(n) -> we create a whole new array from our numbers -> sorting does not happen in place
+
 function mergeSort(arr){
     if(arr.length < 2) return arr 
 
@@ -40,7 +41,6 @@ function merge(arr1, arr2){
             right++
         }
     }
-      
     return result.concat(arr1.slice(left)).concat(arr2.slice(right));
 }
 
