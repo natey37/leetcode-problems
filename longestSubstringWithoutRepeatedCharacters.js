@@ -31,6 +31,7 @@ Output: 0
  * @return {number}
  */
 var lengthOfLongestSubstring = function(s) {
+    //O(2n) solution
     let set = new Set()
     let result = 0 
     let i = 0 
@@ -46,4 +47,18 @@ var lengthOfLongestSubstring = function(s) {
         }
     }
     return result
+
+    //O(n) solution
+
+    // let map = new Map()
+    // let result = 0
+    // let i = 0
+    // for(let j=0; j<s.length; j++){
+    //     if(map.has(s[j])){
+    //         i = Math.max(map.get(s[j]), i)
+    //     }
+    //     result = Math.max(result, j - i + 1)
+    //     map.set(s[j], j+1)
+    // }
+    // return result
 };
