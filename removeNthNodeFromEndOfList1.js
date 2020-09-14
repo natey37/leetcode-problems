@@ -29,7 +29,7 @@ Could you do this in one pass?
  * @return {ListNode}
  */
 var removeNthFromEnd = function(head, n) {
-    let dummyHead = new ListNode(0)
+    let dummyHead = new ListNode(null)
     dummyHead.next = head
     
     let fast = dummyHead
@@ -48,3 +48,7 @@ var removeNthFromEnd = function(head, n) {
     
     return dummyHead.next
 };
+
+
+
+
