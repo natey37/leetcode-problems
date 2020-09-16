@@ -66,3 +66,27 @@ var trap = function(height) {
     }
     return waterCount
 };
+
+
+var trap = function(height) {
+    //Using a stack, time comlexity O(n) -> we iterate through the whole height array, each element to the stack, space complexity O(n) -> we store each element in our stack array
+    let waterCount = 0 
+    let i = 0 
+    let stack = []
+    
+    while(i<height.length){
+        while(stack.length !== 0 && height[i] > height[stack[stack.length-1]]){
+            let top = stack.pop()
+           
+            if(!stack.length) break;
+
+            let dist = i - stack[stack.length-1] - 1
+            let h = Math.min(height[i], height[stack[stack.length-1]]) - height[top]
+            waterCount += dist * h
+            
+        }
+        stack.push(i)
+        i++
+    }
+    return waterCount
+};
