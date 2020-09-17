@@ -20,6 +20,33 @@ Output: 6
  */
 var trap = function(height) {
 
+    //two pointers, time complexity O(n), space complexity O(1)
+    if(!height.length) return 0
+    
+    let waterCount = 0 
+    
+    let left = 0
+    let right = height.length - 1
+    
+    let leftMax = 0
+    let rightMax = 0
+    
+    while(left < right){
+        leftMax = Math.max(leftMax, height[left])
+        if(height[left] < leftMax){
+            waterCount += (leftMax - height[left])
+        }
+        
+        rightMax = Math.max(rightMax, height[right])
+        if(height[right] < rightMax){
+            waterCount += rightMax - height[right]
+        }
+        
+        height[left] < height[right] ? left++ : right--
+    }
+    return waterCount
+    
+
     //brute force solution, time complexity O(n^2) -> we iterate through each element and then for each element we iterate over each element to the left and right of it, space complexity O(1)
     if(!height.length) return 0
     let waterCount = 0
@@ -245,4 +272,3 @@ var trap = function(height) {
     //end of while loop
 
 //return waterCount -> 6
-    
