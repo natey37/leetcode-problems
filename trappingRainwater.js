@@ -90,3 +90,159 @@ var trap = function(height) {
     }
     return waterCount
 };
+//                  0 1 2 3 4 5 6 7 8 9 10 11
+//Example: Input - [0,1,0,2,1,0,1,3,2,1,2,1]
+
+//trap([0,1,0,2,1,0,1,3,2,1,2,1])
+    //waterCount = 0 
+    //i = 0
+    //stack = []
+
+    //while(0<12)
+        //while(stack.length !== 0) -> false 
+
+    //stack.push(i) -> stack = [0]
+    //i++ -> i = 1 
+
+    
+    //while(1<12) 
+        //while(stack.length !== 0 && 1 > 0) -> true
+            //top = 0
+
+            //if(!stack.length) -> true -> break
+
+    //stack.push(i) -> stack = [1]
+    //i++ -> i = 2
+
+    
+    //while(2<12)
+        //while(stack.length !== 0 && 0 > 1) -> false 
+
+    //stack.push(i) -> stack = [1,2]
+    //i++ -> i = 3
+
+    
+    //while(3 < 12)
+        //while(stack.length !== 0 && 2 > 0)
+            //top = 2
+
+            //if(!stack.length) -> false
+
+            //d = 3 - 1 - 1 = 1
+            //h = Math.min(2,1) - 0 = 1
+            //waterCount += 1 * 1
+
+        //while(stack.length !== 0 && 2 > 1)
+            //top = 1 
+
+            //if(!stack.length) -> true -> break;
+
+    //stack.push(3) -> stack = [3]
+    //i++ -> i = 4 
+
+//waterCount = 1 
+//i = 4 
+//stack = [3]
+
+    //while(4<12)
+        //while(stack.length !== 0 && 1 > 2) -> false 
+
+    //stack.push(4) -> stack = [3,4]
+    //i++ -> i = 5 
+
+
+    //while(5<12)
+        //while(stack.length !== 0 && 0 > 1) -> false 
+
+    //stack.push(5) -> stack = [3,4,5]
+    //i++ -> i = 6
+
+
+    //while(6<12)
+        //while(stack.length !==0 && 1 > 0)
+            //top = 5 
+
+            //if(!stack.length) -> false
+
+            //dist = 6 - 4 - 1 = 1
+            //h = Math.min(1, 1) - 0 = 1
+            //waterCount += 1 * 1 -> waterCount = 2
+
+        //while(stack.length !== 0 && 1 > 1) -> false 
+
+    //stack.push(6) -> stack = [3,4,6]
+    //i++ -> = 7
+
+//waterCount = 2
+//i = 7 
+//stack = [3,4,6]
+
+    //while(7<12)
+        //while(stack.length !== 0 && 3 > 1) -> true 
+            //top = 6
+
+            //if(!stack.length) -> false
+
+            //dist = 7 - 4 - 1 = 2
+            //h = Math.min(3, 1) - 1 = 0 
+            //waterCount += 2 * 0 -> waterCount = 2
+
+        //while(stack.length !== 0 && 3 > 1) -> true 
+            //top = 4
+
+            //if(!stack.length) -> false 
+
+            //dis = 7 - 3 - 1 = 3
+            //h = Math.min(3,2) - 1 = 1
+            //waterCount += 3 * 1 -> waterCount = 5
+
+        //while(stack.length !== 0 && 3 > 2)
+            //top = 3 
+
+            //if(!stack.length) -> true -> break 
+    
+    //stack.push(7) -> stack = [7]
+    //i++ -> i = 8
+
+//waterCount = 5
+//i = 8 
+//stack = [7]
+
+    //while(8<12)
+        //while(!stack.length !== 0 && 2 > 3) -> false 
+        
+    //stack.push(8) -> stack = [7,8]
+    //i++ -> i = 9
+
+
+    //while(9<12)
+        //while(!stack.length !== 0 && 1 > 2) -> false 
+
+    //stack.push(9) -> stack = [7,8,9]
+    //i++ -> i = 10
+
+    
+    //while(10<12)
+        //while(!stack.length !== 0 && 2 > 1) 
+            //top = 9
+
+            //dist = 10 - 8 - 1 = 1
+            //h = Math.min(2, 2) - 1 = 1
+            //waterCount += 1 * 1 = 6
+
+        //while(!stack.length !==0 && 2 > 2) -> false 
+    
+    //stack.push(10)
+    //i++ -> i = 11
+
+
+    //while(11<12)
+        //while(!stack.length !== 0 && 0 > 2) -> false 
+
+    //stack.push(11)
+    //i++ -> i = 12 
+
+    //end of while loop
+
+//return waterCount -> 6
+    
