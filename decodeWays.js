@@ -60,29 +60,48 @@ var numDecodings = function(s) {
     //dp = [0,0,0,0]
     //dp[0] = 1 -> [1,0,0,0]
     //for(let i=1;i<=3;i++)
-        //option1 = 2
+        //option1 = 2 (B)
         //option2 = ""
 
         //if(option1 > 0) -> true
+            //how many ways can we make 2 ? 
+            //1 way, just as we could make an empty string 1 way, we set our dp[i] equal to the previous number of ways we could make a single digit letter. In this case we haven't seen a digit yet but our empty string stands as a placeholder for what a single digit letter represents 
             //dp[1] = dp[1-1] -> dp = [1,1,0,0]
         //if(option2 >= 10) -> false
 
+        //So far we have decoded 1 way, we can B
+
     //for(let i=2;i<=3;i++)
-        //option1 = 2
-        //option2 = 22
+        //option1 = 2 (B)
+        //option2 = 22 (V)
 
         //if(option1 > 0) -> true
+            //again how many ways can we make 2 ?
+            //1 way, so we set dp[i] equal to the previous number of ways we could make single digit letters.
             //dp[2] = dp[2-1] -> dp = [1,1,1,0]
         //if(option2 >= 10 && option2 <=26) -> true
+            //how many ways can we make 22 ?
+            //well we can make 22 the number of ways we could make two digit letters plus the number of ways we could make one digit letters. In this case we haven't seen a two digit letter yet but our empty string stands as a placeholder for what a two digit letter represents. So we can make 22 the number of ways we could make 2 individually which we just saw is 1 and add on how many ways we can a two digit number which is also 1. So there are two ways thus far to decode the number 22. Either 2 2 or 22
             //dp[2] += dp[2-2] -> dp = [1,1,2,0]
+
+            //so far we have decoded 2 ways, we can make B B or V
         
     //for(let i=3;i<=3;i++)
-        //option1 = 6
-        //option2 = 26
+        //option1 = 6 (F)
+        //option2 = 26 (Z)
 
         //if(option1 > 0) -> true 
+            //again how many ways can we make 6 ?
+            //1 way, so we set dp[i] equal to the previous number of ways we could make single digit letters, which is represented by dp[i-1]
+            //We have added another letter so now we can make B B F or we can make V F 
             //dp[3] = dp[3-1] -> dp = [1,1,2,2]
         //if(option2 >= 10 && option2 <= 26)
+            //how many ways can we make 26 ?
+            //1 way, so we need to add on to our total number of ways. This will be represented by dp[i-2]. If we look back up, we see that now index 1 represents how many ways we could make two digit letters (dp[1] = 1 represents the 1 way we could make 22 (V), dp[2] = 2 represents the 2 ways we could make B B and V)
+            //We have added another possible two digit letter so now we have another possible combination with the first digit we saw, in this case 2 (B), so we now have the option of B Z or B B F or V F
             //dp[3] += dp[3-2] -> dp = [1,1,2,3]
 
+            //so far we have decoded 3 ways, we make B B F or B Z or V F
+
     //return dp[3] = 3 
+    //It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
