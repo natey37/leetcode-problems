@@ -37,9 +37,13 @@ The flattened tree should look like:
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
  */
-var flatten = function(root) {
-    //Time complexity O(n), we go through our tree once to find the nodes and then we loop through the nodes again to adjust
+
+  //Time complexity O(n), we go through our tree once to find the nodes and then we loop through the nodes again to adjust
     //Space complexity O(n), we create an order array that contains every node, then we return the root in place
+
+    
+var flatten = function(root) {
+   
     let order = []
     const inOrder = (node) => {
         if(!node) return 
@@ -58,3 +62,52 @@ var flatten = function(root) {
         order[i].right = order[i+1]
     }
 };
+
+/*
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+
+After our preorder traversal
+order = [ [1,2,5,3,4,null,6], [2,3,4], [3], [4], [5,null,6], [6] ]
+
+Then we loop through order...
+i = 0 
+[1,2,5,3,4,null,6].left = null -> [1,null,5,null,6]
+[1,null,5,null,6].right = [2,3,4] -> [1,null,2,3,4]
+
+i = 1 
+[2,3,4].left = null -> [2,null,4]
+[2,null,4].right = [3] -> [2,null,3]
+
+These nodes are a physical representation of our original tree's nodes, so changes we make will be made in place on our tree, so our node at order[0] (order[0] represents the entire binary tree) after i = 1 is [1,null,2,null,3]
+
+i = 2 
+[3].left = null -> [3,null]
+[3,null].right = [4] -> [3,null,4]
+
+order[0] = [1,null,2,null,3,null,4]
+
+i = 3 
+[4].left = null -> [4,null]
+[4,null].right = [5,null,6] ->[4,null,5,null,6]
+
+order[0] = [1,null,2,null,3,null,4,null,5,null,6]
+
+i = 4 
+[5,null,6].left = null -> [5,null]
+[5,null].right = [6] -> [5,null,6]
+
+order[0] = [1,null,2,null,3,null,4,null,5,null,6]
+
+i = 5 -> if i + 1 = order.length then we know this is the end of the 'linked list' and we will set the right and left nodes equal to null 
+
+[6].left = null 
+[6,null].right = null
+
+order[0] = [1,null,2,null,3,null,4,null,5,null,6] -> this represents the original binary tree we were given after our changes
+
+*/
