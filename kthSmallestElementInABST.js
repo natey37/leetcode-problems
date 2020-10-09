@@ -39,6 +39,8 @@ Output: 3
  * @return {number}
  */
 var kthSmallest = function(root, k) {
+
+    //inorder recursive approach
     let array = []
     dfs(root)
     return array[k - 1]
@@ -48,5 +50,22 @@ var kthSmallest = function(root, k) {
         dfs(root.left)
         array.push(root.val)
         dfs(root.right)
+    }
+
+    //inorder iterative approach
+     const stack = [];
+
+    while (stack.length > 0 || root != null) {
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
+        
+        if (stack.length > 0) {
+            const top = stack.pop();
+            k--;
+            if (k === 0) return top.val;
+            root = top.right;
+        }
     }
 };
