@@ -55,3 +55,49 @@ var findItinerary = function(tickets) {
     dfs("JFK")
     return itinerary.reverse()
 }
+
+/*
+Input: [["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]
+
+After we make our map, we have 
+map = { MUC: [ 'LHR' ], JFK: [ 'MUC' ], SFO: [ 'SJC' ], LHR: [ 'SFO' ] }
+itineray = []
+Then we run our dfs
+dfs("JFK")
+    dest = ['MUC']
+    while(dest && dest.length > 0)
+        dfs(dest.shift())
+
+    dfs("MUC")
+        dest = ['LHR']
+        while(dest && dest.length > 0)
+            dfs(dest.shift())
+
+        dfs("LHR")
+            dest = ['SFO']
+            while(dest && dest.length > 0)
+                dfs(dest.shift())
+
+            dfs("SFO")
+                dest = ['SJC']
+                while(dest && dest.length > 0)
+                    dfs(dest.shift())
+
+                dfs("SJC")
+                    dest = undefined
+                    while(dest && dest.length > 0)
+                    itinerary.push('SJC')
+
+                itinerary.push('SFO')
+
+            itinerary.push('LHR')
+
+        itinerary.push('MUC')
+
+    itinerary.push('JFK')
+
+
+itinerary = ["SJC", "SFO", "LHR", "MUC", "JFK"]
+We reverse and return ["JFK","MUC","LHR","SFO","SJC"]
+
+*/
