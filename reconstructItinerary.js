@@ -26,8 +26,10 @@ Explanation: Another possible reconstruction is ["JFK","SFO","ATL","JFK","ATL","
  * @return {string[]}
  */
 var findItinerary = function(tickets) {
+    let itinerary = []
     let map = {}
     
+    //creating the departure keys and the arrival array values
     for(let i=0;i<tickets.length;i++){
         let depart = tickets[i][0]
         let arrive = tickets[i][1]
@@ -39,11 +41,12 @@ var findItinerary = function(tickets) {
         }
     }
 
+    //sorting the arrival arrays lexiographgically
     for(let location in map){
         map[location].sort()
     }
     
-    let itinerary = []
+    //running a dfs on the map to create the itinerary
     const dfs = (node) => {
         let dest = map[node]
         while(dest && dest.length > 0){
