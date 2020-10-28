@@ -55,3 +55,39 @@ var isPalindrome = function(head) {
    }
    return true
 };
+
+/*
+1->2->3->4
+
+cur = 1 
+prev = null
+
+while 1 
+    next = 2 
+    1.next = null
+    prev = 1->null
+    cur = 2
+
+while 2 
+    next = 3 
+    2.next = 1->nill
+    prev = 2->1->null
+    cur = 3 
+
+while 3 
+    next = 4 
+    3.next = 2->1->null
+    prev = 3->2->1->null
+    cur = 4
+
+while 4 
+    next = null
+    4.next = 3->2->1->null
+    prev = 4->3->2->1
+    cur = null 
+
+return prev (4->3->2->1)
+
+
+
+*/
